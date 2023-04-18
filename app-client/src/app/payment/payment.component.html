@@ -1,0 +1,18 @@
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+    <div>
+        <h1>your products:</h1>
+        <li *ngFor="let product of products" class="card" style="list-style: none;">
+            <div style="display: flex; flex-direction: row;">
+             <img style="width: 50px; padding: 5px;" [src]="product.image" alt="Avatar" >
+             <div class="container">
+                  <h4><b>{{ product.name }}</b></h4>
+                  <p>price: {{product.price}}</p>
+             </div>
+            </div>
+        </li>
+        <h3>total price: {{total}}</h3>
+    </div>
+    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    <p *ngIf="showCancel" style="color: red;">payment was canceled</p>
+    <p *ngIf="showError" style="color: red;">there been an error on your payment, please try again!</p>
+</div>
