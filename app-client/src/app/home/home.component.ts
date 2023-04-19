@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {User} from "../interfaces/user";
+import {CartService} from "../services/cart.service";
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,12 @@ export class HomeComponent {
   @Output() logout: any;
   isShowPayment: boolean = false;
 
-  constructor() {
+  constructor(private cartService:CartService) {
     this.logout = new EventEmitter;
   }
 
   logoutEmit() {
+    this.cartService.products = [];
     this.logout.emit();
   }
 }
