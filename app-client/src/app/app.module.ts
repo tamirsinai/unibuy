@@ -10,6 +10,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
+import {RouterModule} from "@angular/router";
+import { ProfileComponent } from './profile/profile.component';
+import { CreateStoreComponent } from './create-store/create-store.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { HomeComponent } from './home/home.component';
     SearchComponent,
     LoginComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    CreateStoreComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,7 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     HttpClientModule,
     NgSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
   ],

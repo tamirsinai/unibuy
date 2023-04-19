@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {User} from "../interfaces/user";
+import {HomeService} from "../services/home.service";
 
 @Component({
   selector: 'app-home',
@@ -7,14 +8,14 @@ import {User} from "../interfaces/user";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  @Input() user:User | undefined;
+  user:User | undefined;
   @Output() logout: any;
 
-  constructor() {
+  constructor(private homeService: HomeService) {
     this.logout = new EventEmitter;
   }
 
-  logoutEmit() {
-    this.logout.emit();
+  ngOnInit() {
+    this.user = this.homeService.user;
   }
 }

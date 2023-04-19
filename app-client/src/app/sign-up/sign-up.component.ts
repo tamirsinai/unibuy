@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -10,21 +11,16 @@ export class SignUpComponent {
   email:string = '';
   password:string = '';
   name:string = '';
-  showLoginPage: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   signup() {
     this.http.post('http://localhost:8080/signup', {email: this.email, password: this.password, name: this.name}).subscribe(res => {
       if (res) {
-        this.changePage();
+        this.router.navigate(['']);
       } else {
         alert('Error with create new user, please try again')
       }
     });
-  }
-
-  changePage() {
-    this.showLoginPage = !this.showLoginPage;
   }
 }

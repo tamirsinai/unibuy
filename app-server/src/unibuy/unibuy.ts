@@ -7,6 +7,7 @@ import {MongoSearcher} from "../search/out/mongo-searcher";
 import {ShopApi} from "../shop/shop-api";
 import {MongoInterface} from "../mongo-connector/out/mongo-interface";
 import {UsersAPI} from "../users/users";
+import {StoresAPI} from "../stores/stores";
 
 export class Unibuy {
 
@@ -17,6 +18,7 @@ export class Unibuy {
         new SearchApi(app, new MongoSearcher(mongo));
         new ShopApi(app, new MongoInterface(mongo));
         UsersAPI.init(app);
+        StoresAPI.init(app);
         app.listen(8080, () => {
             console.log(`⚡️[server]: Server is running at http://localhost:8080`);
         });

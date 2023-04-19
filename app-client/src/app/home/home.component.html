@@ -1,5 +1,6 @@
 <div>
+  <i class="fa fa-user" [routerLink]="['/profile']"></i>
   <div>Hello {{user?.email}}</div>
   <app-search></app-search>
-  <button (click)="logoutEmit()">Logout</button>
+  <button [routerLink]="['/']">Logout</button>
 </div>

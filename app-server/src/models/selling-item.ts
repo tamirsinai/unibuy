@@ -9,5 +9,4 @@ export interface SellingItem {
     image: string;
     tags: Tags[];
     sellersShop: Object;//todo: add seller object
-
 }
