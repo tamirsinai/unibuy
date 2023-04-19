@@ -11,4 +11,9 @@ async function login(basicUser: BasicUser) {
     return user;
 }
 
-export const UsersMongo = {createUser, login};
+async function getUserByEmail(basicUser: BasicUser) {
+    const user = await MongoModel.User.findOne({email: basicUser.email});
+    return user;
+}
+
+export const UsersMongo = {createUser, login, getUserByEmail};

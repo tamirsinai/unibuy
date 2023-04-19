@@ -47,6 +47,7 @@ const User = Mongoose.model('users', new Mongoose.Schema({
     email: String,
     password: String,
     name: String,
+    favoriteTags: String,
     isSeller: Boolean,
     isAdmin: Boolean,
     createdAt: Date,

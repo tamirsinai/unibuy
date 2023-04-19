@@ -10,7 +10,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
-import {RouterModule} from "@angular/router";
+import { PaymentComponent } from './payment/payment.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 
@@ -21,6 +22,7 @@ import { CreateStoreComponent } from './create-store/create-store.component';
     LoginComponent,
     SignUpComponent,
     HomeComponent,
+    PaymentComponent,
     ProfileComponent,
     CreateStoreComponent
   ],
@@ -32,6 +34,7 @@ import { CreateStoreComponent } from './create-store/create-store.component';
     HttpClientModule,
     NgSelectModule,
     ReactiveFormsModule,
+    NgxPayPalModule
   ],
   providers: [
   ],

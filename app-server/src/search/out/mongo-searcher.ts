@@ -2,6 +2,9 @@ import {Filter} from "../models/filter";
 import {MongoConnector} from "../../mongo-connector/mongo-connector";
 import {MongoInterface} from "../../mongo-connector/out/mongo-interface";
 import {SellingItem} from "../../models/selling-item";
+import {UsersMongo} from "../../users/out/user-mongo";
+import {BasicUser} from "../../users/models/user";
+
 
 export class MongoSearcher extends MongoInterface{
 
@@ -23,6 +26,14 @@ export class MongoSearcher extends MongoInterface{
         const result = await this.sellingItemModel
             .find({...findObject})
             .limit(filter.limit);
+        return result.map(this.mapResponseToObject<SellingItem[]>);
+    }
+
+    async searchNewest() {
+        const result = await this.sellingItemModel
+            .find()
+            .limit(16)
+            .sort({creationDate: 1});
         return result.map(this.mapResponseToObject<SellingItem[]>);
     }
 }
