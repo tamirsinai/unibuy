@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {Tags} from "../models/tags.model";
 import { Filter } from '../models/filter';
 import {first} from "rxjs/operators";
+import {CartService} from "../services/cart.service";
 
 @Component({
   selector: 'app-search',
@@ -26,7 +27,7 @@ selectedColors:string[] = [];
 products: Product[] = [];
 private newestProducts: Product[] = [];
 
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient, private cartService:CartService) { }
 
   ngOnInit(): void {
     this.getNewestProducts();
@@ -80,5 +81,9 @@ constructor(private http: HttpClient) { }
     }
   }
 
+  addItem(product: Product) {
+    this.cartService.addItem(product);
+    alert(`${product.name} added successfully to cart!`);
+  }
 
 }

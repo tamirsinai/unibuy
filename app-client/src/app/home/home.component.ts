@@ -9,6 +9,7 @@ import {User} from "../interfaces/user";
 export class HomeComponent {
   @Input() user:User | undefined;
   @Output() logout: any;
+  isShowPayment: boolean = false;
 
   constructor() {
     this.logout = new EventEmitter;
