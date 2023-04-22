@@ -6,4 +6,5 @@ export interface Product {
   colors: string[];
   image: string;
   sellersShop: Object;//todo: add seller object
+  price: number;
 }
