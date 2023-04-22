@@ -1,3 +1,4 @@
+
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
   <div *ngIf="currPage == 'login'">
     <div style="margin-top: 20px; margin-bottom: 50px">Welcome to Unibuy, please Log in</div>
@@ -14,12 +15,7 @@
       <span style="cursor: pointer; border: 1px solid grey; border-radius: 10px; padding: 10px" (click)="changePage('signup')">Or sign up here</span>
     </div>
   </div>
-
   <div *ngIf="currPage == 'signup'">
     <app-sign-up></app-sign-up>
-  </div>
-
-  <div *ngIf="currPage == 'home'">
-    <app-home [user]="user" (logout)="logout()"></app-home>
   </div>
 </div>
