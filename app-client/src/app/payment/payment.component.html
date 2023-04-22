@@ -11,7 +11,10 @@
             </div>
         </li>
         <h3>total price: {{total}}</h3>
+        <a class="button" routerLink="/home">keep shopping</a>
+        <br>
     </div>
+    <br>
     <ngx-paypal [config]="payPalConfig"></ngx-paypal>
     <p *ngIf="showCancel" style="color: red;">payment was canceled</p>
     <p *ngIf="showError" style="color: red;">there been an error on your payment, please try again!</p>

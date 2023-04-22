@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {User} from "../interfaces/user";
 import {CartService} from "../services/cart.service";
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +9,15 @@ import {CartService} from "../services/cart.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  @Input() user:User | undefined;
-  @Output() logout: any;
-  isShowPayment: boolean = false;
+  user:User | undefined;
 
-  constructor(private cartService:CartService) {
-    this.logout = new EventEmitter;
+  constructor(private cartService:CartService, private userService: UserService) {
+    this.user = userService.user;
+
   }
 
   logoutEmit() {
+    this.userService.logout();
     this.cartService.products = [];
-    this.logout.emit();
   }
 }
