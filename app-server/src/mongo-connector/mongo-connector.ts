@@ -54,4 +54,12 @@ const User = Mongoose.model('users', new Mongoose.Schema({
     updatedAt: Date
 }));
 
-export const MongoModel = {User};
+const Store = Mongoose.model('stores', new Mongoose.Schema({
+    name: String,
+    adminId: String,
+    description: String,
+    createdAt: Date,
+    updatedAt: Date
+}));
+
+export const MongoModel = {User, Store};

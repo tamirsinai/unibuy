@@ -16,4 +16,9 @@ async function getUserByEmail(basicUser: BasicUser) {
     return user;
 }
 
-export const UsersMongo = {createUser, login, getUserByEmail};
+async function getAllUsers() {
+    const users = await MongoModel.User.find();
+    return users;
+}
+
+export const UsersMongo = {createUser, login, getUserByEmail, getAllUsers};

@@ -5,6 +5,7 @@ export interface BasicUser {
 }
 
 export interface User extends BasicUser {
+    _id:string;
     isAdmin:boolean;
     isSeller:boolean;
     createdAt:Date;
