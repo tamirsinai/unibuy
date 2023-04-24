@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {User} from "../interfaces/user";
 import {HomeService} from "../services/home.service";
 import {CartService} from "../services/cart.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,8 @@ import {CartService} from "../services/cart.service";
 })
 export class HomeComponent {
   user:User | undefined;
-  @Output() logout: any;
-  isShowPayment: boolean = false;
 
-  constructor(private cartService:CartService, private homeService: HomeService) {
-    this.logout = new EventEmitter;
-  }
+  constructor(private cartService:CartService, private homeService: HomeService, private router: Router) { }
 
   ngOnInit() {
     this.user = this.homeService.user;
@@ -23,6 +20,6 @@ export class HomeComponent {
 
   logoutEmit() {
     this.cartService.products = [];
-    this.logout.emit();
+    this.router.navigate(['']);
   }
 }

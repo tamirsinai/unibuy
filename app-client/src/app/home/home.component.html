@@ -1,11 +1,9 @@
 <div>
-  <div *ngIf="!isShowPayment">
-    <i class="fa fa-user" [routerLink]="['/profile']"></i>
-    <div>Hello {{user?.email}}</div>
-    <app-search></app-search>
-    <button [routerLink]="['/']">Logout</button>
+  <i class="fa fa-user" [routerLink]="['/profile']"></i>
+  <div>Hello {{user?.email}}</div>
+  <app-search></app-search>
+  <div>
+    <button [routerLink]="['/payment']">Check out</button>
   </div>
-  <div *ngIf="isShowPayment">
-    <app-payment></app-payment>
-  </div>
+  <button (click)="logoutEmit()">Logout</button>
 </div>

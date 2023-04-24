@@ -1,0 +1,35 @@
+button {
+  padding: 10px;
+  background: black;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+button:hover {
+  background: #2a2a2a;
+}
+
+
+.example {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.example > * {
+  display: block;
+  margin-bottom: 12px;
+  border-radius: 10px;
+}
+
+form.example input[type=text] {
+  justify-content: center;
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  width: 220px;
+  background: #f1f1f1;
+}
