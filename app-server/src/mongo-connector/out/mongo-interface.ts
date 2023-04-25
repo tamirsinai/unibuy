@@ -1,5 +1,5 @@
 import {SellingItem} from "../../models/selling-item";
-import {MongoConnector} from "../mongo-connector";
+import {MongoConnector, MongoModel} from "../mongo-connector";
 
 export class MongoInterface{
     protected sellingItemModel: any;
@@ -13,9 +13,12 @@ export class MongoInterface{
         val["_id"] = undefined;
         return val;
     }
+}
 
-    insert(selling: SellingItem[]) {
-        const result = this.sellingItemModel.collection
-            .insertMany(selling);
-    }
+export async function getStoreItems(storeId: any) {
+    return MongoModel.SellingItem.find({storeId});
+}
+
+export async function insert(selling: SellingItem[]) {
+    return MongoModel.SellingItem.insertMany(selling);
 }

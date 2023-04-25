@@ -16,7 +16,7 @@ export class Unibuy {
         const mongo = new MongoConnector();
         await mongo.connect();
         new SearchApi(app, new MongoSearcher(mongo));
-        new ShopApi(app, new MongoInterface(mongo));
+        new ShopApi(app);
         UsersAPI.init(app);
         StoresAPI.init(app);
         app.listen(8080, () => {

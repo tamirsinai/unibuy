@@ -1,0 +1,9 @@
+<div>
+  <div>You have {{store.items.length}} items</div>
+  <div style="margin-top: 50px" *ngFor="let item of store.items">
+    <div>{{item.name}}</div>
+    <div>{{item.price}}</div>
+    <div>{{item.description}}</div>
+    <div>{{item.quantity}}</div>
+  </div>
+</div>

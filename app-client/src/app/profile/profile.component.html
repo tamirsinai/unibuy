@@ -21,7 +21,8 @@
         <button (click)="createStore()">Create Store</button>
       </div>
     </div>
+    <div *ngIf="user?.isSeller">
+      <button [routerLink]="['/my-store']">My Store</button>
+    </div>
   </div>
-  {{user?.email}}
-  {{user?.password}}
 </div>

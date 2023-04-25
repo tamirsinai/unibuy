@@ -6,6 +6,7 @@ import {User} from "../interfaces/user";
 })
 export class HomeService {
   user: User | undefined;
+  store: any;
 
   constructor() { }
 }

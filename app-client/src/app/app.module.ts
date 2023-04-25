@@ -14,6 +14,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
+import { MyStoreComponent } from './my-store/my-store.component';
+import { MyItemsComponent } from './my-items/my-items.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CreateStoreComponent } from './create-store/create-store.component';
     HomeComponent,
     PaymentComponent,
     ProfileComponent,
-    CreateStoreComponent
+    CreateStoreComponent,
+    MyStoreComponent,
+    MyItemsComponent
   ],
   imports: [
     BrowserModule,

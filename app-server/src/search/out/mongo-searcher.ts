@@ -1,5 +1,5 @@
 import {Filter} from "../models/filter";
-import {MongoConnector} from "../../mongo-connector/mongo-connector";
+import {MongoConnector, MongoModel} from "../../mongo-connector/mongo-connector";
 import {MongoInterface} from "../../mongo-connector/out/mongo-interface";
 import {SellingItem} from "../../models/selling-item";
 import {UsersMongo} from "../../users/out/user-mongo";
@@ -23,14 +23,14 @@ export class MongoSearcher extends MongoInterface{
                 ...(filter.colors?.length ? [{colors: {$in: filter.colors}}] : [])
             ]
         }
-        const result = await this.sellingItemModel
+        const result: any = MongoModel.SellingItem
             .find({...findObject})
             .limit(filter.limit);
         return result.map(this.mapResponseToObject<SellingItem[]>);
     }
 
     async searchNewest() {
-        const result = await this.sellingItemModel
+        const result: any = await MongoModel.SellingItem
             .find()
             .limit(16)
             .sort({creationDate: 1});

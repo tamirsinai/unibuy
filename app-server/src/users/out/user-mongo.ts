@@ -1,5 +1,6 @@
 import {BasicUser} from "../models/user";
 import {MongoModel} from "../../mongo-connector/mongo-connector";
+const { ObjectId } = require('mongodb');
 
 async function createUser(basicUser: BasicUser) {
     const newUser = new MongoModel.User({ email: basicUser.email, password: basicUser.password, name: basicUser.name, isSeller: false, isAdmin: false, createdAt: new Date(), updatedAt: new Date() });
@@ -21,4 +22,9 @@ async function getAllUsers() {
     return users;
 }
 
-export const UsersMongo = {createUser, login, getUserByEmail, getAllUsers};
+async function updateUser(userId: any) {
+    const updateUser = await MongoModel.User.updateOne({_id: ObjectId(userId)}, {$set: {isSeller: true}});
+    return updateUser;
+}
+
+export const UsersMongo = {createUser, login, updateUser, getAllUsers};
