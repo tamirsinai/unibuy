@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent {
   user:User | undefined;
-
   constructor(private cartService:CartService, private homeService: HomeService, private router: Router) { }
 
   ngOnInit() {
@@ -19,7 +18,7 @@ export class HomeComponent {
   }
 
   logoutEmit() {
+    this.userService.logout();
     this.cartService.products = [];
-    this.router.navigate(['']);
   }
 }

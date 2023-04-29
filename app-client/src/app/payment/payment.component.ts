@@ -14,8 +14,6 @@ export class PaymentComponent implements OnInit{
   public showCancel = false;
   public showError = false;
   public showSuccess = false;
-  /*public products = [{name: "iphone", description: "iphone 7 plus", price: 5000.00, image:"https://obiwezy.com/media/catalog/product/cache/ce2df2e05314a5bf3f97292d3ff57525/i/p/iphone_7plus_gold_4.jpg"},
-{name:"adidog shirt", description:"very cute!!", price: 30, image:"https://k9cafesa.com/images/adidog-pink-t-shirt-for-dogs-and-cats-big/10603/800x800/004121.jpg"}]*/
   products :any = [];
   public total = 0;
 
@@ -35,7 +33,7 @@ export class PaymentComponent implements OnInit{
     private initConfig(): void {
       this.products = this.cartService.products;
       this.products = this.products.map((product: Product) => {
-        return {...product, image: "https://obiwezy.com/media/catalog/product/cache/ce2df2e05314a5bf3f97292d3ff57525/i/p/iphone_7plus_gold_4.jpg"}
+        return {...product}
       });
       this.total = this.products.reduce((sum: any, current: { price: any; }) =>
         sum + current.price, 0
