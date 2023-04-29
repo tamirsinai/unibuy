@@ -34,9 +34,6 @@ export class PaymentComponent implements OnInit{
 
     private initConfig(): void {
       this.products = this.cartService.products;
-      this.products = this.products.map((product: Product) => {
-        return {...product, image: "https://obiwezy.com/media/catalog/product/cache/ce2df2e05314a5bf3f97292d3ff57525/i/p/iphone_7plus_gold_4.jpg"}
-      });
       this.total = this.products.reduce((sum: any, current: { price: any; }) =>
         sum + current.price, 0
       )
