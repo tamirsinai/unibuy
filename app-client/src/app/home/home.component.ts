@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {User} from "../interfaces/user";
+import {HomeService} from "../services/home.service";
 import {CartService} from "../services/cart.service";
-import { UserService } from '../services/user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,10 @@ import { UserService } from '../services/user.service';
 })
 export class HomeComponent {
   user:User | undefined;
+  constructor(private cartService:CartService, private homeService: HomeService, private router: Router) { }
 
-  constructor(private cartService:CartService, private userService: UserService) {
-    this.user = userService.user;
-
+  ngOnInit() {
+    this.user = this.homeService.user;
   }
 
   logoutEmit() {

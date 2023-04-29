@@ -18,7 +18,7 @@ export class MongoConnector {
             console.log("Error connecting to database");
         });
 
-        this.sellingItem = Mongoose.model('sellingItem', new Mongoose.Schema({
+        /*this.sellingItem = Mongoose.model('sellingItem', new Mongoose.Schema({
             name: {type: String},
             description: {type: String},
             creationDate: {type: Date},
@@ -26,8 +26,9 @@ export class MongoConnector {
             colors: {type: [String]},
             image: {type: String},
             tags: {type: [String]},
-            sellersShop: {type: String}
-        },{collection: 'sellingItem'}));
+            sellersShop: {type: String},
+            storeId: {type: String}
+        },{collection: 'sellingItem'}));*/
     }
 
     disconnect() {
@@ -54,4 +55,25 @@ const User = Mongoose.model('users', new Mongoose.Schema({
     updatedAt: Date
 }));
 
-export const MongoModel = {User};
+const Store = Mongoose.model('stores', new Mongoose.Schema({
+    name: String,
+    adminId: String,
+    description: String,
+    createdAt: Date,
+    updatedAt: Date
+}));
+
+const SellingItem = Mongoose.model('sellingItem', new Mongoose.Schema({
+    name: {type: String},
+    description: {type: String},
+    creationDate: {type: Date},
+    quantity:{type: Number},
+    colors: {type: [String]},
+    image: {type: String},
+    tags: {type: [String]},
+    sellersShop: {type: String},
+    storeId: {type: String},
+    price: {type: String}
+},{collection: 'sellingItem'}));
+
+export const MongoModel = {User, Store, SellingItem};

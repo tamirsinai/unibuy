@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../interfaces/user";
-import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import {HomeService} from "../services/home.service";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-login',
@@ -13,15 +14,17 @@ export class LoginComponent {
   email:string = '';
   password:string = '';
   user:User | undefined;
-  currPage: string = 'login';
 
-  constructor(private http: HttpClient, private router:Router, private userService: UserService) { }
+
+  constructor(private http: HttpClient, private router: Router, private homeService: HomeService) { }
+
 
   login() {
     this.http.post('http://localhost:8080/login', {email: this.email, password: this.password}).subscribe((res:any) => {
       if (res) {
-        // this.user = res;
-        this.currPage = 'home';
+        this.homeService.user = res;
+        this.user = res;
+        this.router.navigate(['home']);
         this.email = '';
         this.password = '';
         this.userService = res;
@@ -31,13 +34,4 @@ export class LoginComponent {
       }
     });
   }
-
-  changePage(page:string) {
-    this.currPage = page;
-  }
-
-  // logout() {
-  //   delete this.user;
-  //   this.currPage = 'login';
-  // }
 }

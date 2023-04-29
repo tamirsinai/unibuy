@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div>
+  {{store?.name}}
+  {{store?.description}}
+  <div *ngIf="showCreateItemView">
+    <div>
+      <button (click)="addItem()">Create Item</button>
+    </div>
+    <div>
+      <button [routerLink]="['/my-items']">My Items</button>
+    </div>
+  </div>
+  <div *ngIf="!showCreateItemView">
+    <div style="margin-bottom: 20px; margin-top: 30px;">
+      <div>
+        <div>Name</div>
+        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemName">
+      </div>
+    </div>
+    <div style="margin-bottom: 20px; margin-top: 30px;">
+      <div>
+        <div>Price</div>
+        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemPrice">
+      </div>
+    </div>
+    <div style="margin-bottom: 20px; margin-top: 30px;">
+      <div>
+        <div>Description</div>
+        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemDescription">
+      </div>
+    </div>
+    <div style="margin-bottom: 20px; margin-top: 30px;">
+      <div>
+        <div>Quantity</div>
+        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemQuantity">
+      </div>
+    </div>
+    <div style="margin-bottom: 20px; margin-top: 30px;">
+      <div>
+        <div>Image</div>
+        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemImage">
+      </div>
+    </div>
+
+
+    <div style="margin-top: 30px">
+      <form class="example">
+        <ng-select [multiple]="true" class="custom" placeholder="Search.." [(ngModel)]="selectedOptionsTags" name="somethingf">
+          <ng-option *ngFor="let option of values(Tags); let i = index" [value]="option">
+            {{option}}
+          </ng-option>
+        </ng-select>
+      </form>
+    </div>
+    <div style="margin-top: 30px">
+      <form class="example">
+        <ng-select [multiple]="true" class="custom" placeholder="Search.." [(ngModel)]="selectedColors" name="somethingf">
+          <ng-option *ngFor="let option of colors; let i = index" [value]="option">
+            {{option}}
+          </ng-option>
+        </ng-select>
+      </form>
+    </div>
+
+    <button (click)="createItem()">Add Item</button>
+  </div>
+</div>

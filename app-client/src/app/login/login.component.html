@@ -1,21 +1,16 @@
 
-<div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-  <div *ngIf="currPage == 'login'">
-    <div style="margin-top: 20px; margin-bottom: 50px">Welcome to Unibuy, please Log in</div>
-    <div style="margin-bottom: 20px">
-      <div>Email</div>
-      <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="email">
-    </div>
-    <div style="margin-bottom: 20px">
-      <div>Password</div>
-      <input type="password" style="border: none; border-bottom: 1px solid;" [(ngModel)]="password">
-    </div>
-    <button><span (click)="login()">Log in</span></button>
-    <div style="margin: 50px 0px">
-      <span style="cursor: pointer; border: 1px solid grey; border-radius: 10px; padding: 10px" (click)="changePage('signup')">Or sign up here</span>
-    </div>
+<div>
+  <div style="margin-top: 20px; margin-bottom: 50px">Welcome to Unibuy, please Log in</div>
+  <div style="margin-bottom: 20px">
+    <div>Email</div>
+    <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="email">
   </div>
-  <div *ngIf="currPage == 'signup'">
-    <app-sign-up></app-sign-up>
+  <div style="margin-bottom: 20px">
+    <div>Password</div>
+    <input type="password" style="border: none; border-bottom: 1px solid;" [(ngModel)]="password">
+  </div>
+  <button><span (click)="login()">Log in</span></button>
+  <div style="margin: 50px 0px">
+    <span style="cursor: pointer; border: 1px solid grey; border-radius: 10px; padding: 10px" [routerLink]="['/signup']">Or sign up here</span>
   </div>
 </div>

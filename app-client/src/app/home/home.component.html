@@ -1,8 +1,9 @@
 <div>
-    <div>Hello {{user?.email}}</div>
-    <app-search></app-search>
-    <div>
-      <a class="button" routerLink="/payment">Check out</a>
-    </div>
-    <button (click)="logoutEmit()">Logout</button>
+  <i class="fa fa-user" [routerLink]="['/profile']"></i>
+  <div>Hello {{user?.email}}</div>
+  <app-search></app-search>
+  <div>
+    <button [routerLink]="['/payment']">Check out</button>
+  </div>
+  <button (click)="logoutEmit()">Logout</button>
 </div>
