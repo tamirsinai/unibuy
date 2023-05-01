@@ -1,9 +1,10 @@
 <div>
   <div>You have {{store.items.length}} items</div>
   <div style="margin-top: 50px" *ngFor="let item of store.items">
-    <div>{{item.name}}</div>
-    <div>{{item.price}}</div>
-    <div>{{item.description}}</div>
-    <div>{{item.quantity}}</div>
+    <div style="font-size: medium; font-weight: 600;">name : {{item.name}}</div>
+    <img [src]="item.image" alt="Avatar" style="width:100%; height: 250px;">
+    <div  style="font-size: medium; font-weight: 300;">price : {{item.price}}</div>
+    <div  style="font-size: medium; font-weight: 300;">description : {{item.description}}</div>
+    <div  style="font-size: medium; font-weight: 300;">quantity : {{item.quantity}}</div>
   </div>
 </div>

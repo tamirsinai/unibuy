@@ -8,5 +8,6 @@ export interface SellingItem {
     colors: string[];
     image: string;
     tags: Tags[];
+    price: number;
     sellersShop: Object;//todo: add seller object
 }

@@ -23,7 +23,7 @@ export class MongoSearcher extends MongoInterface{
                 ...(filter.colors?.length ? [{colors: {$in: filter.colors}}] : [])
             ]
         }
-        const result: any = MongoModel.SellingItem
+        const result: any = await MongoModel.SellingItem
             .find({...findObject})
             .limit(filter.limit);
         return result.map(this.mapResponseToObject<SellingItem[]>);
