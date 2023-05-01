@@ -18,7 +18,7 @@
 </form>
 <ul style="justify-content: center">
   <li *ngFor="let product of products" class="card">
-      <img [src]="product.image" alt="Avatar" style="width:100%">
+      <img [src]="product.image" alt="Avatar" style="width:100%; height: 250px;">
       <div class="container">
         <h4><b>{{ product.name }}</b></h4>
         <p>{{product.description}}</p>
