@@ -86,4 +86,19 @@ constructor(private http: HttpClient, private cartService:CartService) { }
     alert(`${product.name} added successfully to cart!`);
   }
 
+  selectOption(option: any) {
+    this.selectedOptionsTags.some(tag => tag == option) ? this.selectedOptionsTags = this.selectedOptionsTags.filter(tag => tag != option) : this.selectedOptionsTags.push(option);
+  }
+
+  showSelectTag(option: any) {
+    return this.selectedOptionsTags.some(tag => tag == option);
+  }
+
+  selectColor(option: any) {
+    this.selectedColors.some(tag => tag == option) ? this.selectedColors = this.selectedColors.filter(tag => tag != option) : this.selectedColors.push(option);
+  }
+
+  showSelectColor(option: any) {
+    return this.selectedColors.some(tag => tag == option);
+  }
 }

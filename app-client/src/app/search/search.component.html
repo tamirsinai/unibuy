@@ -2,28 +2,38 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div style="display: flex; align-items: center; flex-direction: column">
-<form class="example" action="action_page.php">
-  <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchQuery">
-  <ng-select [multiple]="true" class="custom"  placeholder="filter" [(ngModel)]="selectedOptionsTags" name="somethingf">
-    <ng-option *ngFor="let option of values(Tags); let i = index" [value]="option">
-    {{option}}
-  </ng-option>
-  </ng-select>
-  <ng-select [multiple]="true" class="custom"  placeholder="color" [(ngModel)]="selectedColors" name="something">
-    <ng-option *ngFor="let option of colors; let i = index" [value]="option">
-      {{option}}
-  </ng-option>
-  </ng-select>
-  <button type="submit"  (click)="search()"><i class="fa fa-search"></i></button>
-</form>
-<ul style="justify-content: center">
-  <li *ngFor="let product of products" class="card">
-      <img [src]="product.image" alt="Avatar" style="width:100%; height: 250px;">
-      <div class="container">
-        <h4><b>{{ product.name }}</b></h4>
-        <p>{{product.description}}</p>
-        <button class="add-button" (click)="addItem(product)">Add</button>
+  <form class="example" action="action_page.php">
+    <input class="fa fa-search" type="text" placeholder="&#xf002; name of a product or seller" name="search" [(ngModel)]="searchQuery">
+    <div style="display: flex; flex-direction: row; overflow-x: scroll; width: 462px">
+      <div [ngStyle]="{'border': showSelectTag(option) ? '2px solid green' : ''}" style="margin: 5px; padding: 10px; background-color: #FB7F64; border-radius: 30px; color: white" *ngFor="let option of values(Tags); let i = index">
+        <span (click)="selectOption(option)">{{option}}</span>
       </div>
-  </li>
-</ul>
+    </div>
+    <div style="display: flex; flex-direction: row; overflow-x: scroll; width: 462px; justify-content: center">
+      <div [ngStyle]="{'border': showSelectColor(option) ? '2px solid green' : ''}" style="margin: 5px; padding: 10px; background-color: #FB7F64; border-radius: 30px; color: white" *ngFor="let option of colors; let i = index">
+        <span (click)="selectColor(option)">{{option}}</span>
+      </div>
+    </div>
+    <button type="submit" (click)="search()"><i class="fa fa-search"></i></button>
+  </form>
+  <div style="display: flex; align-self: start; margin: 0 0 10px 30px">{{products.length}} products</div>
+  <div style="columns: 2; -webkit-columns: 2; -moz-columns: 2; list-style: none">
+    <div *ngFor="let product of products" class="card" style="width: 200px; height: 200px; margin-bottom: 20px">
+      <div style="background-color: rgba(0,0,0,0.6); z-index: 100000; margin-top: 120px; position: absolute; color: white; width: 200px; height: 80px; border-radius: 0 0 30px 30px">
+        <div style="display: flex; align-items: start; margin: 5px 0 0 10px; font-size: 15px">
+          {{product.name}}
+        </div>
+        <div style="display: flex; align-items: start; margin: 2px 0 0 10px; font-size: 15px">
+          ${{product.price}}
+        </div>
+        <div>
+          <button (click)="addItem(product)" style="background-color: black; color: white; border-radius: 30px; padding: 5px 7px 5px 5px; font-size: 12px; border: 1px solid #cccccc;">
+            <i style="padding: 0 2px 0 2px" class="fa fa-cart-plus"></i>
+            Add to cart
+          </button>
+        </div>
+      </div>
+      <img [src]="product.image" style="width: 100%; height: 200px; border-radius: 30px">
+    </div>
+  </div>
 </div>
