@@ -24,5 +24,8 @@
     <div *ngIf="user?.isSeller">
       <button [routerLink]="['/my-store']">My Store</button>
     </div>
+    <div>
+      <button (click)="logoutEmit()">Logout</button>
+    </div>
   </div>
 </div>

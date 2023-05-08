@@ -19,7 +19,7 @@ export class LoginComponent {
   login() {
     this.http.post('http://localhost:8080/login', {email: this.email, password: this.password}).subscribe((res:any) => {
       if (res) {
-        this.homeService.user = res;
+        this.homeService.user.next(res);
         this.user = res;
         this.router.navigate(['home']);
         this.email = '';

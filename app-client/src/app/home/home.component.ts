@@ -15,11 +15,8 @@ export class HomeComponent {
   constructor(private cartService:CartService, private homeService: HomeService, private router: Router) { }
 
   ngOnInit() {
-    this.user = this.homeService.user;
-  }
-
-  logoutEmit() {
-    this.cartService.products = [];
-    this.router.navigate(['']);
+    this.homeService.user.subscribe(res => {
+      this.user = res;
+    })
   }
 }

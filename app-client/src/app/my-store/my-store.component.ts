@@ -3,6 +3,7 @@ import {HomeService} from "../services/home.service";
 import {HttpClient} from "@angular/common/http";
 import {Tags} from "../models/tags.model";
 import {Router} from "@angular/router";
+import {User} from "../interfaces/user";
 
 @Component({
   selector: 'app-my-store',
@@ -22,11 +23,15 @@ export class MyStoreComponent {
   selectedColors:string[] = [];
   selectedOptionsTags:Tags[] = [];
   showCreateItemView: boolean = true;
+  user:User | undefined;
 
   constructor(private homeService: HomeService, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    this.http.post('http://localhost:8080/getStore', {adminId: this.homeService.user?._id}).subscribe((res:any) => {
+    this.homeService.user.subscribe(res => {
+      this.user = res;
+    });
+    this.http.post('http://localhost:8080/getStore', {adminId: this.user?._id}).subscribe((res:any) => {
       this.store = res;
       this.homeService.store = this.store;
     });
