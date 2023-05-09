@@ -6,7 +6,7 @@
       <i style="margin-right: 10px" class="fa fa-heart-o"></i>
       <i [routerLink]="['/payment']" class="fa fa-shopping-basket"></i>
     </div>
-    <span style="font-size: 30px;">UniBuy</span>
+    <span [routerLink]="['/home']" style="font-size: 30px;">UniBuy</span>
     <button [routerLink]="['/profile']" class="hey-button">Hey {{user ? user?.email : 'Guest'}}!</button>
   </div>
   <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">

@@ -18,7 +18,7 @@ export class SearchComponent implements  OnInit {
   searchUrl: string = "http://localhost:8080/search"
   newestUrl: string = "http://localhost:8080/search/newest"
 
-colors: string[] = ["red","white", "blue", "green", "black", "yellow"];
+colors: string[] = ["Red","White", "Blue", "Green", "Black", "Yellow", "Brown"];
 
 Tags = Tags;
 values = Object.values;
@@ -63,7 +63,7 @@ constructor(private http: HttpClient, private cartService:CartService) { }
         tags: this.selectedOptionsTags,
         wordSearch: this.searchQuery,
         colors: this.selectedColors,
-        limit: 10
+        limit: 100
       };
       console.log(searchFilter);
 
