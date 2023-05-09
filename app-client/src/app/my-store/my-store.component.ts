@@ -11,7 +11,7 @@ import {User} from "../interfaces/user";
   styleUrls: ['./my-store.component.css']
 })
 export class MyStoreComponent {
-  colors: string[] = ["red","white", "blue", "green", "black", "yellow"];
+  colors: string[] = ["Red","White", "Blue", "Green", "Black", "Yellow", "Brown"];
   Tags = Tags;
   values = Object.values;
   store: any;
@@ -28,12 +28,15 @@ export class MyStoreComponent {
   constructor(private homeService: HomeService, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
+    // @ts-ignore
+    !this.user ? this.homeService.user.next(JSON.parse(localStorage.getItem('user'))) : undefined;
     this.homeService.user.subscribe(res => {
       this.user = res;
     });
     this.http.post('http://localhost:8080/getStore', {adminId: this.user?._id}).subscribe((res:any) => {
       this.store = res;
-      this.homeService.store = this.store;
+      this.homeService.store.next(this.store);
+      localStorage.setItem('store', JSON.stringify(res));
     });
   }
 

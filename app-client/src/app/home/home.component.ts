@@ -15,6 +15,8 @@ export class HomeComponent {
   constructor(private cartService:CartService, private homeService: HomeService, private router: Router) { }
 
   ngOnInit() {
+    // @ts-ignore
+    !this.user ? this.homeService.user.next(JSON.parse(localStorage.getItem('user'))) : undefined;
     this.homeService.user.subscribe(res => {
       this.user = res;
     })

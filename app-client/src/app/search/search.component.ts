@@ -83,7 +83,6 @@ constructor(private http: HttpClient, private cartService:CartService) { }
 
   addItem(product: Product) {
     this.cartService.addItem(product);
-    alert(`${product.name} added successfully to cart!`);
   }
 
   selectOption(option: any) {

@@ -21,6 +21,8 @@ export class ProfileComponent {
 
   ngOnInit() {
     this.user = this.homeService.user.getValue();
+    // @ts-ignore
+    !this.user ? this.homeService.user.next(JSON.parse(localStorage.getItem('user'))) : undefined;
     this.homeService.user.subscribe(res => {
       this.user = res;
     })
@@ -41,7 +43,7 @@ export class ProfileComponent {
 
   logoutEmit() {
     this.homeService.user.next(undefined);
-    this.cartService.products = [];
+    this.cartService.products.next([]);
     this.router.navigate(['']);
   }
 }

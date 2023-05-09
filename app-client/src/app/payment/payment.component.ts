@@ -33,9 +33,13 @@ export class PaymentComponent implements OnInit{
     }
 
     private initConfig(): void {
-      this.products = this.cartService.products;
+      // @ts-ignore
+      !this.products ? this.cartService.products.next(JSON.parse(localStorage.getItem('products'))) : undefined;
+      this.cartService.products.subscribe(res => {
+        this.products = res;
+      })
       this.total = this.products.reduce((sum: any, current: { price: any; }) =>
-        sum + current.price, 0
+        +sum + +current.price, 0
       )
         this.payPalConfig = {
             currency: 'ILS',
@@ -88,5 +92,9 @@ export class PaymentComponent implements OnInit{
                 //this.resetStatus();
             }
         };
+    }
+
+    removeItem(product: Product) {
+      this.cartService.products.next(this.products.filter((prod: any) => (prod.name != product.name)));
     }
 }

@@ -11,12 +11,20 @@ import {User} from "./interfaces/user";
 })
 export class AppComponent {
   user:User | undefined;
+  productsLength: number = 0;
 
   constructor(private cartService:CartService, private homeService: HomeService, private router: Router) { }
 
   ngOnInit() {
+    // @ts-ignore
+    !this.user ? this.homeService.user.next(JSON.parse(localStorage.getItem('user'))) : undefined;
     this.homeService.user.subscribe(res => {
       this.user = res;
+    })
+    // @ts-ignore
+    !this.productsLength ? this.cartService.products.next(JSON.parse(localStorage.getItem('products'))) : undefined;
+    this.cartService.products.subscribe(res => {
+      this.productsLength = res?.length || 0;
     })
   }
 }

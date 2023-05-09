@@ -21,6 +21,7 @@ export class LoginComponent {
       if (res) {
         this.homeService.user.next(res);
         this.user = res;
+        localStorage.setItem('user', JSON.stringify(res));
         this.router.navigate(['home']);
         this.email = '';
         this.password = '';

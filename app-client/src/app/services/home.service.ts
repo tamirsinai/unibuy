@@ -7,7 +7,7 @@ import {BehaviorSubject, Subject} from "rxjs";
 })
 export class HomeService {
   user = new BehaviorSubject<User | undefined>(undefined);
-  store: any;
+  store = new BehaviorSubject<User | undefined>(undefined);
 
   constructor() { }
 }

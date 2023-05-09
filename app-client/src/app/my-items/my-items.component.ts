@@ -13,6 +13,10 @@ export class MyItemsComponent {
   constructor(private homeService: HomeService, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    this.store = this.homeService.store;
+    // @ts-ignore
+    !this.store ? this.homeService.store.next(JSON.parse(localStorage.getItem('store'))) : undefined;
+    this.homeService.store.subscribe(res => {
+      this.store = res;
+    })
   }
 }

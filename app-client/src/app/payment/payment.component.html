@@ -3,6 +3,7 @@
         <h1>your products:</h1>
         <li *ngFor="let product of products" class="card" style="list-style: none;">
             <div style="display: flex; flex-direction: row;">
+            <div (click)="removeItem(product)" style="display: flex; align-items: center; margin-right: 10px" class="fa fa-remove"></div>
              <img style="width: 50px; padding: 5px;" [src]="product.image" alt="Avatar" >
              <div class="container">
                   <h4><b>{{ product.name }}</b></h4>
@@ -10,7 +11,7 @@
              </div>
             </div>
         </li>
-        <h3>total price: {{total}}</h3>
+        <h3>total price: {{total.toFixed(2)}}</h3>
     </div>
     <ngx-paypal [config]="payPalConfig"></ngx-paypal>
     <p *ngIf="showCancel" style="color: red;">payment was canceled</p>
