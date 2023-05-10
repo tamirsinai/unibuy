@@ -96,5 +96,8 @@ export class PaymentComponent implements OnInit{
 
     removeItem(product: Product) {
       this.cartService.products.next(this.products.filter((prod: any) => (prod.name != product.name)));
+      this.total = this.products.reduce((sum: any, current: { price: any; }) =>
+        +sum + +current.price, 0
+      )
     }
 }
