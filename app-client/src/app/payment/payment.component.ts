@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit{
 
     private initConfig(): void {
       // @ts-ignore
-      !this.products ? this.cartService.products.next(JSON.parse(localStorage.getItem('products'))) : undefined;
+      !this.productsLength && localStorage.getItem('products') ? this.cartService.products.next(JSON.parse(localStorage.getItem('products'))) : undefined;
       this.cartService.products.subscribe(res => {
         this.products = res;
       })

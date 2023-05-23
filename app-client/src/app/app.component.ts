@@ -22,7 +22,7 @@ export class AppComponent {
       this.user = res;
     })
     // @ts-ignore
-    !this.productsLength ? this.cartService.products.next(JSON.parse(localStorage.getItem('products'))) : undefined;
+    !this.productsLength && localStorage.getItem('products') ? this.cartService.products.next(JSON.parse(localStorage.getItem('products'))) : undefined;
     this.cartService.products.subscribe(res => {
       this.productsLength = res?.length || 0;
     })

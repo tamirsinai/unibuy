@@ -1,19 +1,20 @@
-<div>
-  <div style="margin-top: 20px; margin-bottom: 50px">Welcome to Unibuy, please Sign up</div>
-  <div style="margin-bottom: 20px">
-    <div>Email</div>
-    <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="email">
+<div style="margin: 100px 60px 20px 40px">
+  <div style="font-size: 20px; margin-bottom: 30px">
+    Sign up
   </div>
-  <div style="margin-bottom: 20px">
-    <div>Name</div>
-    <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="name">
+  <div style="margin-bottom: 25px">
+    <input style="padding: 10px; font-size: 15px; border: 2px solid #CDC8BE; width: 100%; border-radius: 30px;" class="fa fa-user" type="text" placeholder="  &#xf007;   Email" name="email" [(ngModel)]="email">
   </div>
-  <div style="margin-bottom: 20px">
-    <div>Password</div>
-    <input type="password" style="border: none; border-bottom: 1px solid;" [(ngModel)]="password">
+  <div style="margin-bottom: 25px">
+    <input style="padding: 10px; font-size: 15px; border: 2px solid #CDC8BE; width: 100%; border-radius: 30px;" class="fa fa-user" type="text" placeholder="  &#xf023;   Name" name="name" [(ngModel)]="name">
   </div>
-  <button><span (click)="signup()">Sign up</span></button>
-  <div style="margin: 50px 0px">
-    <span style="cursor: pointer; border: 1px solid grey; border-radius: 10px; padding: 10px" [routerLink]="['/']">Or sign in here</span>
+  <div style="margin-bottom: 25px">
+    <input style="padding: 10px; font-size: 15px; border: 2px solid #CDC8BE; width: 100%; border-radius: 30px;" class="fa fa-user" type="text" placeholder="  &#xf023;   Password" name="password" [(ngModel)]="password">
+  </div>
+  <div style="margin-top: 50px">
+    <button style="background-color: #CDC8BE; padding: 12px; width: 107%; border-radius: 30px; border: 0px" (click)="signup()">Sign up</button>
+  </div>
+  <div style="display: flex; justify-content: center; margin-top: 50px">
+    <u style="cursor: pointer; color: #CDC8BE; " [routerLink]="['/']">Already have an account? Sign in</u>
   </div>
 </div>

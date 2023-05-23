@@ -1,45 +1,35 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div>
-  {{store?.name}}
-  {{store?.description}}
-  <div *ngIf="showCreateItemView">
-    <div>
-      <button (click)="addItem()">Create Item</button>
-    </div>
-    <div>
-      <button [routerLink]="['/my-items']">My Items</button>
-    </div>
-  </div>
-  <div *ngIf="!showCreateItemView">
+  <div>
     <div style="margin-bottom: 20px; margin-top: 30px;">
       <div>
         <div>Name</div>
-        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemName">
+        <input style="border: none; border-bottom: 1px solid; width: 100%" [(ngModel)]="itemName">
       </div>
     </div>
     <div style="margin-bottom: 20px; margin-top: 30px;">
       <div>
         <div>Price</div>
-        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemPrice">
+        <input style="border: none; border-bottom: 1px solid; width: 100%" [(ngModel)]="itemPrice">
       </div>
     </div>
     <div style="margin-bottom: 20px; margin-top: 30px;">
       <div>
         <div>Description</div>
-        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemDescription">
+        <input style="border: none; border-bottom: 1px solid; width: 100%" [(ngModel)]="itemDescription">
       </div>
     </div>
     <div style="margin-bottom: 20px; margin-top: 30px;">
       <div>
         <div>Quantity</div>
-        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemQuantity">
+        <input style="border: none; border-bottom: 1px solid; width: 100%" [(ngModel)]="itemQuantity">
       </div>
     </div>
     <div style="margin-bottom: 20px; margin-top: 30px;">
       <div>
         <div>Image</div>
-        <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="itemImage">
+        <input style="border: none; border-bottom: 1px solid; width: 100%" [(ngModel)]="itemImage">
       </div>
     </div>
 
@@ -63,6 +53,6 @@
       </form>
     </div>
 
-    <button (click)="createItem()">Add Item</button>
+    <button style="background-color: #CDC8BE; padding: 12px; width: 100%; border-radius: 30px; border: 0px" (click)="createItem()">Add Item</button>
   </div>
 </div>

@@ -1,31 +1,39 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div>
-  <div>
-    <button *ngIf="!showCreateStoreView" (click)="createStoreView()">Create new store</button>
-    <div *ngIf="showCreateStoreView">
-      <div style="margin-bottom: 20px; margin-top: 30px;">
-        <div>
-          <div>Store Name</div>
-          <input style="border: none; border-bottom: 1px solid;" [(ngModel)]="storeName">
-        </div>
-        <div style="margin-top: 30px">
-          <form class="example">
-            <ng-select class="custom" placeholder="Search.." [(ngModel)]="selectedUser" name="somethingf">
-              <ng-option *ngFor="let option of allUsers; let i = index" [value]="option">
-                {{option.name}}
-              </ng-option>
-            </ng-select>
-          </form>
-        </div>
-        <button (click)="createStore()">Create Store</button>
+<div style="margin: 20px 50px 20px 50px">
+  <div style="display: flex; justify-content: center">
+    <button style="background-color: #CDC8BE; padding: 12px; width: 100%; border-radius: 30px; border: 0px" *ngIf="!showCreateStoreView && user?.isAdmin" (click)="createStoreView()">Create New Store</button>
+  </div>
+  <div *ngIf="showCreateStoreView">
+    <div style="font-size: 18px">
+      Create New Store
+    </div>
+    <div style="margin-bottom: 20px; margin-top: 30px;">
+      <div>
+        <div style="font-size: 16px; margin-bottom: 10px">Store Name</div>
+        <input style="border: none; border-bottom: 1px solid; width: 100%" [(ngModel)]="storeName">
+      </div>
+      <div style="margin-top: 30px">
+        <form class="example">
+          <ng-select class="custom" placeholder="Search.." [(ngModel)]="selectedUser" name="something">
+            <ng-option *ngFor="let option of allUsers; let i = index" [value]="option">
+              {{option.name}}
+            </ng-option>
+          </ng-select>
+        </form>
+      </div>
+      <div style="display: flex; justify-content: center; margin-top: 30px">
+        <button style="background-color: #CDC8BE; padding: 12px; width: 100%; border-radius: 30px; border: 0px" (click)="createStore()">Create Store</button>
       </div>
     </div>
+  </div>
+  <div style="margin-top: 80px">
     <div *ngIf="user?.isSeller">
-      <button [routerLink]="['/my-store']">My Store</button>
+      <app-my-store *ngIf="showCreateItemView"></app-my-store>
+      <button *ngIf="!showCreateItemView" style="background-color: #CDC8BE; padding: 12px; width: 100%; border-radius: 30px; border: 0px" (click)="addItem()">Add Item</button>
     </div>
-    <div>
-      <button (click)="logoutEmit()">Logout</button>
+    <div style="margin-top: 10px">
+      <button style="background-color: #CDC8BE; padding: 12px; width: 100%; border-radius: 30px; border: 0px" (click)="logoutEmit()">Logout</button>
     </div>
   </div>
 </div>

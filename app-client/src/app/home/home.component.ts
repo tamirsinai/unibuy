@@ -3,6 +3,7 @@ import {User} from "../interfaces/user";
 import {HomeService} from "../services/home.service";
 import {CartService} from "../services/cart.service";
 import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,9 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent {
   user:User | undefined;
+  store: any;
 
-  constructor(private cartService:CartService, private homeService: HomeService, private router: Router) { }
+  constructor(private cartService:CartService, private homeService: HomeService, private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
     // @ts-ignore
@@ -20,5 +22,10 @@ export class HomeComponent {
     this.homeService.user.subscribe(res => {
       this.user = res;
     })
+    this.http.post('http://localhost:8080/getStore', {adminId: this.user?._id}).subscribe((res:any) => {
+      this.store = res;
+      this.homeService.store.next(this.store);
+      localStorage.setItem('store', JSON.stringify(res));
+    });
   }
 }

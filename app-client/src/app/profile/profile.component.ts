@@ -16,6 +16,7 @@ export class ProfileComponent {
   storeName: string = '';
   allUsers: User[] = [];
   selectedUser: User | undefined;
+  showCreateItemView: boolean = false;
 
   constructor(private homeService: HomeService, private http: HttpClient, private cartService:CartService, private router: Router) { }
 
@@ -41,7 +42,14 @@ export class ProfileComponent {
     });
   }
 
+  addItem() {
+    this.showCreateItemView = !this.showCreateItemView;
+  }
+
   logoutEmit() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('products');
+    localStorage.removeItem('store');
     this.homeService.user.next(undefined);
     this.cartService.products.next([]);
     this.router.navigate(['']);

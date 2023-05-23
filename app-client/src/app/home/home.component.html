@@ -1,6 +1,38 @@
 <div>
-  <div style="display: flex; align-self: start; font-size: 20px; margin: 20px 0 10px 35px">
-    Explore
+  <div *ngIf="!user?.isSeller">
+    <div style="display: flex; align-self: start; font-size: 20px; margin: 20px 0 10px 35px">
+      Explore
+    </div>
+    <app-search></app-search>
   </div>
-  <app-search></app-search>
+
+  <div style="margin:40px 20px 20px 20px" *ngIf="user?.isSeller">
+    <div style="display: flex; justify-content: center; align-content: center; align-items: center; font-size: 18px; flex-direction: column">
+      <div>
+        {{store.name}}
+      </div>
+      <div style="background-color: #686458; border-radius: 10px; padding: 10px; color: white; margin-top: 15px; font-size: 14px">
+        {{store.items.length}} items
+      </div>
+    </div>
+    <div style="margin-bottom: 20px; font-size: 16px; margin-top: 30px">
+      My Items
+    </div>
+    <div style="columns: 2; -webkit-columns: 2; -moz-columns: 2; list-style: none">
+      <div *ngFor="let product of store.items" class="card" style="width: 200px; height: 200px; margin-bottom: 20px">
+        <div style="background-color: rgba(0,0,0,0.6); z-index: 100000; margin-top: 120px; position: absolute; color: white; width: 200px; height: 80px; border-radius: 0 0 30px 30px">
+          <div style="display: flex; align-items: start; margin: 5px 0 0 10px; font-size: 15px">
+            {{product.name | slice:0:20}}
+          </div>
+          <div style="display: flex; align-items: start; margin: 3px 0 0 10px; font-size: 15px">
+            ${{product.price}}
+          </div>
+          <div style="display: flex; align-items: start; margin: 3px 0 0 10px; font-size: 15px">
+            {{product.quantity}} In Stock
+          </div>
+        </div>
+        <img [src]="product.image" style="width: 100%; height: 200px; border-radius: 30px">
+      </div>
+    </div>
+  </div>
 </div>

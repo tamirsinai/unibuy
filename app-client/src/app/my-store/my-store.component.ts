@@ -22,7 +22,6 @@ export class MyStoreComponent {
   itemImage: string = '';
   selectedColors:string[] = [];
   selectedOptionsTags:Tags[] = [];
-  showCreateItemView: boolean = true;
   user:User | undefined;
 
   constructor(private homeService: HomeService, private http: HttpClient, private router: Router) {}
@@ -38,10 +37,6 @@ export class MyStoreComponent {
       this.homeService.store.next(this.store);
       localStorage.setItem('store', JSON.stringify(res));
     });
-  }
-
-  addItem() {
-    this.showCreateItemView = !this.showCreateItemView;
   }
 
   createItem() {
