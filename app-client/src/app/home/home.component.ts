@@ -22,10 +22,14 @@ export class HomeComponent {
     this.homeService.user.subscribe(res => {
       this.user = res;
     })
-    this.http.post('http://localhost:8080/getStore', {adminId: this.user?._id}).subscribe((res:any) => {
+    this.user?.isSeller && this.http.post('http://localhost:8080/getStore', {adminId: this.user?._id}).subscribe((res:any) => {
       this.store = res;
       this.homeService.store.next(this.store);
       localStorage.setItem('store', JSON.stringify(res));
     });
+  }
+
+  openInstagram(){
+    window.open('https://www.instagram.com/', "_blank");
   }
 }
