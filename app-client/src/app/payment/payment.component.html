@@ -25,4 +25,8 @@
     <p *ngIf="showCancel" style="color: red;">payment was canceled</p>
     <p *ngIf="showError" style="color: red;">there been an error on your payment, please try again!</p>
   </div>
+
+  <div style="display: flex; justify-content: center">
+    <button style="align-items: center; background-color: #CDC8BE; padding: 12px; width: 50%; border-radius: 30px; border: 0px;" (click)="pay()">Pay Now</button>
+  </div>
 </div>

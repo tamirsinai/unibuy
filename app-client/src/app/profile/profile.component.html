@@ -32,6 +32,7 @@
       <app-my-store *ngIf="showCreateItemView"></app-my-store>
       <button *ngIf="!showCreateItemView" style="background-color: #CDC8BE; padding: 12px; width: 100%; border-radius: 30px; border: 0px" (click)="addItem()">Add Item</button>
     </div>
+    <button style="background-color: #CDC8BE; padding: 12px; width: 100%; border-radius: 30px; border: 0px; margin-top: 10px" [routerLink]="['/statistics']">Statistics</button>
     <div style="margin-top: 10px">
       <button style="background-color: #CDC8BE; padding: 12px; width: 100%; border-radius: 30px; border: 0px" (click)="logoutEmit()">Logout</button>
     </div>

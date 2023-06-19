@@ -52,7 +52,9 @@ const User = Mongoose.model('users', new Mongoose.Schema({
     isSeller: Boolean,
     isAdmin: Boolean,
     createdAt: Date,
-    updatedAt: Date
+    updatedAt: Date,
+    orders: Number,
+    profit: Number
 }));
 
 const Store = Mongoose.model('stores', new Mongoose.Schema({

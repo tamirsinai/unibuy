@@ -8,6 +8,8 @@ export interface User extends BasicUser {
   _id:string;
   isAdmin:boolean;
   isSeller:boolean;
+  profit?:number;
+  orders?:number;
   createdAt:Date;
   updatedAt:Date;
 }

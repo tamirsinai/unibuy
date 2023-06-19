@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { MyStoreComponent } from './my-store/my-store.component';
 import { MyItemsComponent } from './my-items/my-items.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MyItemsComponent } from './my-items/my-items.component';
     ProfileComponent,
     CreateStoreComponent,
     MyStoreComponent,
-    MyItemsComponent
+    MyItemsComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

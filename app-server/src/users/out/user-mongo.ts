@@ -27,4 +27,17 @@ async function updateUser(userId: any) {
     return updateUser;
 }
 
-export const UsersMongo = {createUser, login, updateUser, getAllUsers};
+async function pay(storesOwnerIdAndProfit: any, userId: any, userOrders: any) {
+    await MongoModel.User.updateOne({_id: ObjectId(userId)}, {$set: {orders: userOrders}});
+    let res = await MongoModel.User.findOne({_id: ObjectId(userId)});
+    let ordersEmails = [];
+    for (let store of storesOwnerIdAndProfit) {
+        let storeDbId = await MongoModel.Store.findOne({_id: ObjectId(store.id)});
+        let storeUser = await MongoModel.User.findOne({_id: ObjectId(storeDbId.adminId)});
+        ordersEmails.push(storeUser.email);
+        await MongoModel.User.updateOne({_id: ObjectId(storeDbId.adminId)}, {$set: {orders: (storeUser.orders || 0) + store.orders, profit: (storeUser.profit || 0) + store.profit}});
+    }
+    return {res, ordersEmails};
+}
+
+export const UsersMongo = {createUser, login, updateUser, getAllUsers, pay};

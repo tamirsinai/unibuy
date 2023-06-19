@@ -1,0 +1,15 @@
+<div style="display: flex; align-items: center; justify-content: center; align-content: center; flex-direction: column; margin-top: 150px; text-align: center">
+  <div *ngIf="user?.profit" style="margin-bottom: 30px">
+    Profit
+    <div>
+      ${{user?.profit}}
+    </div>
+  </div>
+  <div *ngIf="user?.profit" style="border-bottom: black 1px solid; width: 50%"></div>
+  <div *ngIf="user?.orders" style="margin-top: 30px">
+    Orders
+    <div>
+      {{user?.orders}}
+    </div>
+  </div>
+</div>
