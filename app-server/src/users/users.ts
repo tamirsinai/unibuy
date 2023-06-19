@@ -53,6 +53,7 @@ async function pay(req, res) {
         console.log(`Got request to pay with ${JSON.stringify(req.body)}`);
         response = await UsersMongo.pay(req.body.storesOwnerIdAndProfit, req.body.userId, req.body.userOrders);
 
+        //Aa123456123456
         const sendMail = (details, callback) => {
             const transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",

@@ -15,7 +15,7 @@ export class SignUpComponent {
   constructor(private http: HttpClient, private router: Router) { }
 
   signup() {
-    this.http.post('http://localhost:8080/signup', {email: this.email, password: this.password, name: this.name}).subscribe(res => {
+    this.http.post('http://172.20.10.2:8080/signup', {email: this.email, password: this.password, name: this.name}).subscribe(res => {
       if (res) {
         this.router.navigate(['']);
       } else {

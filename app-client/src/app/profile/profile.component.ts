@@ -27,7 +27,7 @@ export class ProfileComponent {
     this.homeService.user.subscribe(res => {
       this.user = res;
     })
-    this.http.get('http://localhost:8080/users').subscribe((res:any) => {
+    this.http.get('http://172.20.10.2:8080/users').subscribe((res:any) => {
       this.allUsers = res;
     });
   }
@@ -37,7 +37,7 @@ export class ProfileComponent {
   }
 
   createStore() {
-    this.http.post('http://localhost:8080/createStore', {name: this.storeName, adminId: this.selectedUser?._id}).subscribe((res:any) => {
+    this.http.post('http://172.20.10.2:8080/createStore', {name: this.storeName, adminId: this.selectedUser?._id}).subscribe((res:any) => {
       console.log(res);
     });
   }

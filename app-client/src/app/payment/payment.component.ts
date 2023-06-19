@@ -129,7 +129,7 @@ export class PaymentComponent implements OnInit{
         }
       });
 
-      this.http.post('http://localhost:8080/pay', {storesOwnerIdAndProfit, userId: this.user._id, userOrders: this.user.orders+1, order: {products: this.products, price: this.total, name: this.user.name}}).subscribe((res:any) => {
+      this.http.post('http://172.20.10.2:8080/pay', {storesOwnerIdAndProfit, userId: this.user._id, userOrders: this.user.orders+1, order: {products: this.products, price: this.total, name: this.user.name}}).subscribe((res:any) => {
         this.user = res.res;
         this.homeService.user.next(res.res);
         localStorage.setItem('user', JSON.stringify(res.res));

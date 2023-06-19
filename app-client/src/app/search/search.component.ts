@@ -15,8 +15,8 @@ import {CartService} from "../services/cart.service";
 export class SearchComponent implements  OnInit {
 
   searchQuery: string = '';
-  searchUrl: string = "http://localhost:8080/search"
-  newestUrl: string = "http://localhost:8080/search/newest"
+  searchUrl: string = "http://172.20.10.2:8080/search"
+  newestUrl: string = "http://172.20.10.2:8080/search/newest"
 
 colors: string[] = ["Red","White", "Blue", "Green", "Black", "Yellow", "Brown"];
 

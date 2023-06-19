@@ -17,7 +17,7 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router, private homeService: HomeService) { }
 
   login() {
-    this.http.post('http://localhost:8080/login', {email: this.email, password: this.password}).subscribe((res:any) => {
+    this.http.post('http://172.20.10.2:8080/login', {email: this.email, password: this.password}).subscribe((res:any) => {
       if (res) {
         this.homeService.user.next(res);
         this.user = res;
